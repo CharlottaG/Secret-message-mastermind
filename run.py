@@ -1,3 +1,6 @@
+import random
+
+
 def instructions():
     """Print instructions to user on how to play the game."""
     print("Can you find the code guarding the secret message?")
@@ -24,6 +27,7 @@ def get_username():
 def guess():
     """Asks user to enter 4 digits"""
     """validates for numbers and no duplication."""
+    global user_input
 
     while True:
         user_input = input("Please enter a 4 digit code: \n")
@@ -43,6 +47,7 @@ def guess():
         else:
             increment_guess()
             print(f"Guess {current_guess}: {user_input}\n")
+            #check_for_match()
             break
 
 
@@ -61,14 +66,29 @@ def increment_guess():
     global current_guess
     current_guess += 1
 
-
 current_guess = 0
 
 
+def set_random_code():
+    """ Create random 4 digit code with no duplications """
+    global random_code
+    #random_code = random.sample("123456", 4)
+    random_code = 6543
+
+
+#def check_for_match():
+    """ Checks if user input matches random code """
+    if user_input == random_code:
+        print("The secret message is: Carpe diem!\n")
+    else:
+        guess()
+
+
 def main():
-    instructions()
-    get_username()
-    guess()
+   # instructions()
+   get_username()
+   # set_random_code()
+   guess()
 
 
 main()
