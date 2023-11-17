@@ -8,4 +8,16 @@ def instructions():
     print("Good Luck and Hurry Up!\n")
     print("__________________________________________________\n")
 
+
+def get_username():
+    """Asks user for username, validates user input"""
+    
+    while True:
+        username = input("Please enter your name: \n").strip()
+        if username != "":
+            print(f"\nAha {username}! You want to know the secret message. Let's get started!\n")
+            break
+        else:
+            print("You can't keep it a secret! Please enter your name:")
+
 instructions()
