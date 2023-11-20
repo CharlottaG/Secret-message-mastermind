@@ -1,5 +1,7 @@
 import random
 
+current_guess = 0
+
 
 def instructions():
     """Print instructions to user on how to play the game."""
@@ -24,7 +26,14 @@ def get_username():
             print("You can't keep it a secret! Please enter your name:")
 
 
-def guess():
+def set_random_code():
+    """ Create random 4 digit code with no duplications """
+    global random_code
+    random_code = "".join(random.sample("123456", 4))
+    print(f"random code: {random_code}\n")
+
+
+def guess_code():
     """Asks user to enter 4 digits"""
     """validates for numbers and no duplication."""
     global user_input
@@ -45,10 +54,7 @@ def guess():
             print("No, no, no! No duplications!\n")
         # Prints guess and increments number for each new guess
         else:
-            increment_guess()
-            print(f"Guess {current_guess}: {user_input}\n")
-            #check_for_match()
-            break
+            check_for_match()
 
 
 def has_duplication(code):
@@ -66,29 +72,28 @@ def increment_guess():
     global current_guess
     current_guess += 1
 
-current_guess = 0
 
-
-def set_random_code():
-    """ Create random 4 digit code with no duplications """
-    global random_code
-    #random_code = random.sample("123456", 4)
-    random_code = 6543
-
-
-#def check_for_match():
-    """ Checks if user input matches random code """
-    if user_input == random_code:
-        print("The secret message is: Carpe diem!\n")
+def check_for_match():
+    """
+    Check user input against random code to see if they match, if not increment guess.
+    """
+    global current_guess
+    if user_input != random_code:
+        increment_guess()
+        print(f"Guess {current_guess}: {user_input}\n")
+    elif current_guess == 10:
+            print("Code unbroken; keep on searching for the secret message!")
+    elif user_input == random_code:
+        print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
+        break
     else:
-        guess()
-
+        guess_code()
 
 def main():
-   # instructions()
+   instructions()
    get_username()
-   # set_random_code()
-   guess()
+   set_random_code()
+   guess_code()
 
 
 main()
