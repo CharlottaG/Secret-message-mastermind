@@ -37,7 +37,6 @@ def set_random_code():
     """ Create random 4 digit code with no duplications """
     global random_code
     random_code = "".join(random.sample("123456", 4))
-    print(f"random code: {random_code}\n")
 
 
 def guess_code():
@@ -92,7 +91,24 @@ def check_guess():
         print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
         is_game_over()
     else:
-        increment_guess()
+        global user_input_array
+        global random_code_array
+
+        compare_digits(user_input_array, random_code_array) and increment_guess()
+
+
+def compare_digits(user_input_array, random_code_array):
+    global user_input
+    global random_code
+
+    user_input_array = [int(x) for x in str(user_input)]
+    random_code_array = [int(x) for x in str(random_code)]
+
+    for x, y in zip(user_input_array, random_code_array):
+        if x == y:
+            print("Right")
+        else:
+            print("Wrong")
 
 
 def increment_guess(): 
@@ -112,6 +128,7 @@ def increment_guess():
 
             
 def is_game_over():
+    """ Check if player wants to play new game and resets all values """
     answer = input("Do you want to play again? Y/N\n")
     global current_guess
     global guesses_left
@@ -129,7 +146,7 @@ def is_game_over():
     else:
         print("No, no, no! /ou need to enter Y or N.\n")
         is_game_over()
-        
+
 
 def main():
     instructions()
