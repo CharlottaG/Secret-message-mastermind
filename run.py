@@ -1,6 +1,11 @@
 import random
+#import gspread
+#from google.oauth2.service_account import Credentials
 
 current_guess = 0
+guesses_left = 3
+random_code = ""
+previous_user_input = ""
 
 
 def instructions():
@@ -37,10 +42,11 @@ def guess_code():
     """Asks user to enter 4 digits"""
     """validates for numbers and no duplication."""
     global user_input
+    global previous_user_input
 
     while True:
         user_input = input("Please enter a 4 digit code: \n")
-        # Validates for not being empty
+        # Validates not empty
         if user_input == "":
             print("No, no, no! You can't leave this empty!\n")
         # Validates digits and no other characters
@@ -52,9 +58,13 @@ def guess_code():
         # Validates duplication
         elif has_duplication(user_input) is True:
             print("No, no, no! No duplications!\n")
-        # Prints guess and increments number for each new guess
+        # Check that the user input is not the same as the previous input
+        elif user_input == previous_user_input:
+            print("No, no, no! You have already tried this code\n") 
+        # Check for match against random code
         else:
-            check_for_match()
+            previous_user_input = user_input
+            check_guess()           
 
 
 def has_duplication(code):
@@ -67,33 +77,42 @@ def has_duplication(code):
     return False
 
 
-def increment_guess():
-    """ Increments with 1 to track the number of guesses for each new entry """
-    global current_guess
-    current_guess += 1
-
-
-def check_for_match():
+def check_guess():
     """
-    Check user input against random code to see if they match, if not increment guess.
+    Check if user input match random code.
     """
-    global current_guess
-    if user_input != random_code:
-        increment_guess()
-        print(f"Guess {current_guess}: {user_input}\n")
-    elif current_guess == 10:
-            print("Code unbroken; keep on searching for the secret message!")
-    elif user_input == random_code:
+    if user_input == random_code:
         print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
-        break
     else:
-        guess_code()
+        increment_guess()
+
+
+def increment_guess(): 
+    """ Increments guess for each new entry"""
+    global current_guess
+    global user_input
+    global guesses_left
+    
+    if current_guess < 2:
+        current_guess += 1
+        guesses_left -= 1
+        print(f"Guess {current_guess}: {user_input}\n")
+        print(f"{guesses_left} guesses left!\n")
+            
+
+#""def is_game_over():
+#        if guesses_left < 3:
+#            guess_code()    
+#        else:
+#           print("Code unbroken; the secret message is forever lost!")  
+        
 
 def main():
-   instructions()
-   get_username()
-   set_random_code()
-   guess_code()
-
+    instructions()
+    get_username()
+    set_random_code()
+   # is_game_over()
+    guess_code()
+    
 
 main()
