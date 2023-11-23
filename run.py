@@ -2,10 +2,11 @@ import random
 #import gspread
 #from google.oauth2.service_account import Credentials
 
-current_guess = 0
-guesses_left = 3
 random_code = ""
 previous_user_input = []
+user_input = ""
+current_guess = 0
+guesses_left = 3
 
 
 def instructions():
@@ -41,11 +42,9 @@ def set_random_code():
 def guess_code():
     """Asks user to enter 4 digits"""
     """validates for numbers and no duplication."""
-    global user_input
-    global previous_user_input
-
+    
     while True:
-        user_input = input("Please enter a 4 digit code: \n")
+        user_input = input("Please enter a 4 digit code: ")
         # Validates not empty
         if user_input == "":
             print("No, no, no! You can't leave this empty!\n")
@@ -93,25 +92,38 @@ def increment_guess():
     global user_input
     global guesses_left
     
-    if current_guess < 2:
+    if guesses_left > 0:
         current_guess += 1
         guesses_left -= 1
         print(f"Guess {current_guess}: {user_input}\n")
         print(f"{guesses_left} guesses left!\n")
-            
+    if guesses_left == 0:
+        print(" You are out of guesses!")
+        is_game_over()
 
-#""def is_game_over():
-#        if guesses_left < 3:
-#            guess_code()    
-#        else:
-#           print("Code unbroken; the secret message is forever lost!")  
+            
+def is_game_over():
+    answer = input("Do you wnat to play again? Y/N\n")
+    global current_guess
+    global guesses_left
+
+    if answer.upper() == "Y":
+        """ Reset values for new game"""
+        del previous_user_input[:]
+        current_guess = 0
+        guesses_left = 3
+        guess_code()
+    if answer.upper() == "N":
+        exit()
+    else:
+        print("No, no, no you need to enter Y or N.\n")
+        is_game_over()
         
 
 def main():
     instructions()
     get_username()
     set_random_code()
-   # is_game_over()
     guess_code()
     
 
