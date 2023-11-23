@@ -5,7 +5,7 @@ import random
 current_guess = 0
 guesses_left = 3
 random_code = ""
-previous_user_input = ""
+previous_user_input = []
 
 
 def instructions():
@@ -58,12 +58,12 @@ def guess_code():
         # Validates duplication
         elif has_duplication(user_input) is True:
             print("No, no, no! No duplications!\n")
-        # Check that the user input is not the same as the previous input
-        elif user_input == previous_user_input:
-            print("No, no, no! You have already tried this code\n") 
+        # Check that the user input is not the same as any previous input
+        elif user_input in previous_user_input:
+            print("No, no, no! You have already tried this code.\n") 
         # Check for match against random code
         else:
-            previous_user_input = user_input
+            previous_user_input.append(user_input)
             check_guess()           
 
 
