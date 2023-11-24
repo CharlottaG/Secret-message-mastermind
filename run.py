@@ -70,8 +70,8 @@ def validate_user_input(user_input):
         print("No, no, no! You have already tried this code.\n")
     else:
         previous_user_input.append(user_input)
-        increment_guess()
         check_guess()
+        increment_guess()
 
 
 def has_duplication(code):
