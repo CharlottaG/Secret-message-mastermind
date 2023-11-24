@@ -162,7 +162,7 @@ def main():
     instructions()
     get_username()
     set_random_code()
-    get_user_input()
-    
+    get_user_input()   
+
 
 main()
