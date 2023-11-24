@@ -30,7 +30,7 @@ def instructions():
     print("You have 10 tries before the wisdom words will be forever lost.\n")
     print("  You will get feedback on the digits you enter.\n")    
     print("  You'll learn if th digits exists in code or not,")
-    print("  and if they are in the right place or not.\n\n")
+    print("  and if they are in the right place or not.\n")
     print("LUCK has no place in this game, but BRAINPOWER do!\n")
     print("__________________________________________________\n")
 
