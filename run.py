@@ -27,7 +27,7 @@ def get_username():
     while True:
         username = input("Please enter your name: \n").strip()
         if username != "":
-            print(f"\nAha {username}! Curious about the secret message?\n")
+            print(f"\nAha {username.upper()}! Curious about the secret message?\n")
             break
         else:
             print("You can't keep it a secret! Please enter your name:")
