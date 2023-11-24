@@ -13,7 +13,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('MasterMindMessages')
 
-MAX_GUESSES = 3
+MAX_GUESSES = 10
 messages = SHEET.worksheet('messages')
 secret_messages = messages.col_values(1)
 random_code = ""
@@ -24,11 +24,11 @@ random_secret_message = ""
 
 def instructions():
     """Print instructions to user on how to play the game."""
-    print("Can you find the code to learn the wisdom words from wise people befor you?\n")
+    print("Can you find the code to learn the wisdom words?\n")
     print("It is a 4 digit code with numbers between 1 and 6.\n")
     print("There can be no duplicate digits in the code.\n")
     print("You have 10 tries before the wisdom words will be forever lost.\n")
-    print("  You will get feedback on the digits you enter.\n")    
+    print("  You will get feedback on the digits you enter.\n")
     print("  You'll learn if th digits exists in code or not,")
     print("  and if they are in the right place or not.\n")
     print("LUCK has no place in this game, but BRAINPOWER do!\n")
@@ -104,15 +104,13 @@ def check_guess():
     Check if user input match random code.
     """
 
-    global user_input
-    global random_code
+    # global user_input
+    # global random_code
     global random_secret_message
-
-    print(f"User: {user_input}, Code:{random_code}")
 
     if user_input == random_code:
         random_secret_message = get_random_secret_message()
-        print(f"Congratulations, you guessed the code! The wisdom words are: {random_secret_message}!\n")
+        print(f"Congrats, the wisdom words are: {random_secret_message}!\n")
         is_game_over()
     else:
         are_digits_in_code()
@@ -120,13 +118,13 @@ def check_guess():
 
 def are_digits_in_code():
     """ Check if each digit in user input exits and match random code """
-    global user_input
-    global random_code
+    # global user_input
+    # global random_code
 
     user_input_array = [int(x) for x in str(user_input)]
     random_code_array = [int(x) for x in str(random_code)]
 
-    #Iterate through index and value in user input
+    # Iterate through index and value in user input
     for user_index, user_digit in enumerate(user_input_array):
         # Check if digit exits in random code
         if user_digit in random_code_array:
@@ -134,7 +132,7 @@ def are_digits_in_code():
             if user_digit == random_code_array[user_index]:
                 print(f"Number {user_digit} is placed correct.")
             # Digit exits in random code, but in another position
-            else: 
+            else:
                 print(f"Number {user_digit} is placed incorrect. ")
             # Move to check the next digit in user input
             continue
@@ -144,18 +142,20 @@ def are_digits_in_code():
 
 def get_random_secret_message():
     """ Get random message from spreadsheet """
-    global secret_messages
+    # global secret_messages
+
     # Pick a random number(index) based on how many messages in sheet
-    random_index = random.randint(0, len(secret_messages) -1)
+    random_index = random.randint(0, len(secret_messages)-1)
+
     # Use random number to pick a message in sheet
     random_secret_message = secret_messages[random_index]
     return random_secret_message
 
 
-def increment_guess(): 
+def increment_guess():
     """ Increments guess for each new entry"""
     global MAX_GUESSES
-    
+
     if MAX_GUESSES > 0:
         MAX_GUESSES -= 1
         print(f"Number of guesses left: {MAX_GUESSES}\n")
@@ -163,7 +163,7 @@ def increment_guess():
         print(" You are out of guesses!")
         is_game_over()
 
-            
+
 def is_game_over():
     """ Check if player wants to play new game and resets all values """
     answer = input("Do you want to play again? Y/N\n")
@@ -181,7 +181,7 @@ def is_game_over():
     if answer.upper() == "N":
         exit()
     else:
-        print("No, no, no! /ou need to enter Y or N.\n")
+        print("No, no, no! You need to enter Y or N.\n")
         is_game_over()
 
 
@@ -189,7 +189,7 @@ def main():
     instructions()
     get_username()
     set_random_code()
-    get_user_input()   
+    get_user_input()
 
 
 main()
