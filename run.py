@@ -13,27 +13,25 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('MasterMindMessages')
 
+MAX_GUESSES = 3
 messages = SHEET.worksheet('messages')
-
-secret_message = messages.get_all_values()
-
-print(secret_message)
-
+secret_messages = messages.col_values(1)
 random_code = ""
 user_input = ""
 previous_user_input = []
-MAX_GUESSES = 3
+random_secret_message = ""
 
 
 def instructions():
     """Print instructions to user on how to play the game."""
-    print("Can you find the code guarding the secret message?")
-    print("It is a 4 digit code with numbers between 1 and 6.")
-    print("There can be no duplications.\n")
-    print("You have 10 tries before the message will self-destruct.\n")
-    print("   ! indicates one correct number, placed correct.\n")
-    print("   * indicates one correct number, placed wrong.\n")
-    print("Good Luck and Hurry Up!\n")
+    print("Can you find the code to learn the wisdom words from wise people befor you?\n")
+    print("It is a 4 digit code with numbers between 1 and 6.\n")
+    print("There can be no duplicate digits in the code.\n")
+    print("You have 10 tries before the wisdom words will be forever lost.\n")
+    print("  You will get feedback on the digits you enter.\n")    
+    print("  You'll learn if th digits exists in code or not,")
+    print("  and if they are in the right place or not.\n\n")
+    print("LUCK has no place in this game, but BRAINPOWER do!\n")
     print("__________________________________________________\n")
 
 
@@ -44,7 +42,7 @@ def get_username():
     while True:
         username = input("Please enter your name: \n").strip()
         if username != "":
-            print(f"\nAha {username.upper()}! Curious about the secret message?\n")
+            print(f"\nAha {username.upper()}, you are eager from wisdom!\n")
             break
         else:
             print("You can't keep it a secret! Please enter your name:")
@@ -65,7 +63,7 @@ def get_user_input():
         if validate_user_input(user_input):
             return user_input
         else:
-            print("Please try again!\n")
+            print("Give it another go!\n")
 
 
 def validate_user_input(user_input):
@@ -108,11 +106,13 @@ def check_guess():
 
     global user_input
     global random_code
+    global random_secret_message
 
     print(f"User: {user_input}, Code:{random_code}")
 
     if user_input == random_code:
-        print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
+        random_secret_message = get_random_secret_message()
+        print(f"Congratulations, you guessed the code! The wisdom words are: {random_secret_message}!\n")
         is_game_over()
     else:
         are_digits_in_code()
@@ -140,6 +140,16 @@ def are_digits_in_code():
             continue
         else:
             print(f"Number {user_digit} is not in the code")
+
+
+def get_random_secret_message():
+    """ Get random message from spreadsheet """
+    global secret_messages
+    # Pick a random number(index) based on how many messages in sheet
+    random_index = random.randint(0, len(secret_messages) -1)
+    # Use random number to pick a message in sheet
+    random_secret_message = secret_messages[random_index]
+    return random_secret_message
 
 
 def increment_guess(): 
