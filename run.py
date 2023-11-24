@@ -5,8 +5,7 @@ import random
 random_code = ""
 user_input = ""
 previous_user_input = []
-current_guess = 0
-guesses_left = 3
+MAX_GUESSES = 3
 
 
 def instructions():
@@ -71,6 +70,7 @@ def validate_user_input(user_input):
         print("No, no, no! You have already tried this code.\n")
     else:
         previous_user_input.append(user_input)
+        increment_guess()
         check_guess()
 
 
@@ -98,7 +98,7 @@ def check_guess():
         print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
         is_game_over()
     else:
-        compare_digits() and increment_guess()
+        compare_digits()
 
 
 def compare_digits():
@@ -117,16 +117,12 @@ def compare_digits():
 
 def increment_guess(): 
     """ Increments guess for each new entry"""
-    global current_guess
-    global user_input
-    global guesses_left
+    global MAX_GUESSES
     
-    if guesses_left > 0:
-        current_guess += 1
-        guesses_left -= 1
-        print(f"Guess {current_guess}: {user_input}\n")
-        print(f"{guesses_left} guesses left!\n")
-    if guesses_left == 0:
+    if MAX_GUESSES > 0:
+        MAX_GUESSES -= 1
+        print(f"Number of guesses left: {MAX_GUESSES}\n")
+    if MAX_GUESSES == 0:
         print(" You are out of guesses!")
         is_game_over()
 
