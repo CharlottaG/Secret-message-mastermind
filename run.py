@@ -98,21 +98,31 @@ def check_guess():
         print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
         is_game_over()
     else:
-        compare_digits()
+        are_digits_in_code()
 
 
-def compare_digits():
+def are_digits_in_code():
+    """ Check if each digit in user input exits and match random code """
     global user_input
     global random_code
 
     user_input_array = [int(x) for x in str(user_input)]
     random_code_array = [int(x) for x in str(random_code)]
 
-    for user_digits, code_digits in zip(user_input_array, random_code_array):
-        if user_digits == code_digits:
-            print("Right")
+    #Iterate through index and value in user input
+    for user_index, user_digit in enumerate(user_input_array):
+        # Check if digit exits in random code
+        if user_digit in random_code_array:
+            # Check if digit is in the same position as in random code
+            if user_digit == random_code_array[user_index]:
+                print(f"Number {user_digit} is placed correct.")
+            # Digit exits in random code, but in another position
+            else: 
+                print(f"Number {user_digit} is placed incorrect. ")
+            # Move to check the next digit in user input
+            continue
         else:
-            print("Wrong")
+            print(f"Number {user_digit} is not in the code")
 
 
 def increment_guess(): 

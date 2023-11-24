@@ -3,9 +3,9 @@ import random
 #from google.oauth2.service_account import Credentials
 
 random_code = ""
+user_input = ""
 previous_user_input = []
-current_guess = 0
-guesses_left = 3
+MAX_GUESSES = 3
 
 
 def instructions():
@@ -39,32 +39,39 @@ def set_random_code():
     random_code = "".join(random.sample("123456", 4))
 
 
-def guess_code():
-    """Asks user to enter 4 digits"""
-    """validates for numbers and no duplication."""
+def get_user_input():
+    """ Asks user to enter a 4 digit code and validates the input """
     global user_input
-    
+
     while True:
         user_input = input("Please enter a 4 digit code: ")
-        # Validates not empty
-        if user_input == "":
-            print("No, no, no! You can't leave this empty!\n")
-        # Validates digits and no other characters
-        elif not user_input.isdigit():
-            print("No, no, no! Digits only!\n")
-        # Validates 4 digits
-        elif len(user_input) != 4:
-            print("No, no, no! 4 digits please!\n")
-        # Validates duplication
-        elif has_duplication(user_input) is True:
-            print("No, no, no! No duplications!\n")
-        # Validates user input is not the same as any previous input
-        elif user_input in previous_user_input:
-            print("No, no, no! You have already tried this code.\n") 
-        # Check for match against random code
+        if validate_user_input(user_input):
+            return user_input
         else:
-            previous_user_input.append(user_input)
-            check_guess() 
+            print("Please try again!\n")
+
+
+def validate_user_input(user_input):
+    """ Validates user input """
+    # Validates that input is not empty
+    if user_input == "":
+        print("No, no, no! You can't leave this empty!\n")
+    # Validates input is digits and no other characters
+    elif not user_input.isdigit():
+        print("No, no, no! Digits only!\n")
+    # Validates input is 4 digits
+    elif len(user_input) != 4:
+        print("No, no, no! 4 digits please!\n")
+    # Validates input for unique digits, no duplicate digits allowed
+    elif has_duplication(user_input) is True:
+        print("No, no, no! No duplications!\n")
+    # Validates user input is not the same as any previous input
+    elif user_input in set(previous_user_input):
+        print("No, no, no! You have already tried this code.\n")
+    else:
+        previous_user_input.append(user_input)
+        increment_guess()
+        check_guess()
 
 
 def has_duplication(code):
@@ -91,38 +98,47 @@ def check_guess():
         print("Congratulations, you guess the code! The secret message is: Carpe diem!\n")
         is_game_over()
     else:
-        global user_input_array
-        global random_code_array
-
-        compare_digits(user_input_array, random_code_array) and increment_guess()
+        are_digits_in_code()
 
 
-def compare_digits(user_input_array, random_code_array):
+def are_digits_in_code():
+    """ Check if each digit in user input exits and match random code """
     global user_input
     global random_code
 
     user_input_array = [int(x) for x in str(user_input)]
     random_code_array = [int(x) for x in str(random_code)]
 
-    for x, y in zip(user_input_array, random_code_array):
-        if x == y:
-            print("Right")
+    #Iterate through index and value in user input
+    for user_index, user_digit in enumerate(user_input_array):
+        # Check if digit exits in random code
+        if user_digit in random_code_array:
+            # Check if digit is in the same position as in random code
+            if user_digit == random_code_array[user_index]:
+                print("Number {user_digit} is placed correct.")
+            # Digit exits in random code, but in another position
+            else: 
+                print("Number {user_digit} is placed incorrect. ")
+            # Move to check the next digit in user input
+            continue
         else:
-            print("Wrong")
+            print("Number {user_digit} is not in the code")
+    
+    for user_digits, code_digits in zip(user_input_array, random_code_array):
+        if user_digits == code_digits:
+            print("Number {user_digit} is in correct place")
+        else:
+            print("Number {user_digit} is in wrong place")
 
 
 def increment_guess(): 
     """ Increments guess for each new entry"""
-    global current_guess
-    global user_input
-    global guesses_left
+    global MAX_GUESSES
     
-    if guesses_left > 0:
-        current_guess += 1
-        guesses_left -= 1
-        print(f"Guess {current_guess}: {user_input}\n")
-        print(f"{guesses_left} guesses left!\n")
-    if guesses_left == 0:
+    if MAX_GUESSES > 0:
+        MAX_GUESSES -= 1
+        print(f"Number of guesses left: {MAX_GUESSES}\n")
+    if MAX_GUESSES == 0:
         print(" You are out of guesses!")
         is_game_over()
 
@@ -152,7 +168,7 @@ def main():
     instructions()
     get_username()
     set_random_code()
-    guess_code()
+    get_user_input()
     
 
 main()
