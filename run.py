@@ -148,9 +148,9 @@ def is_game_over():
         del previous_user_input[:]
         current_guess = 0
         guesses_left = 3
-        print(f"So you are still curious! Let's go {username}\n")
+        print(f"So you are still curious! Let's go {username.upper()}\n")
         set_random_code()
-        guess_code()
+        get_user_input()
     if answer.upper() == "N":
         exit()
     else:
