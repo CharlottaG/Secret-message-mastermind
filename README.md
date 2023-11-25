@@ -21,7 +21,7 @@ When you begin the game, you'll get some instructions to follow. Your goal is to
 
 
 ## Error handling
-The user input with the geussed code is validated for:
+The user input with the guessed code is validated for:
   - not beeing empty
   - 4 digits, not less nor more
   - no repetition of digits
