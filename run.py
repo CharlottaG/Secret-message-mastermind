@@ -80,6 +80,9 @@ def validate_user_input(user_input):
     # Validates input for unique digits, no duplicate digits allowed
     elif has_duplication(user_input) is True:
         print("No, no, no! No duplications!\n")
+    # Validates that the entered digits are within the range of 1-6
+    elif 1 <= user_input.isdigit() <= 6:
+        print("No, no, no! You can only use the numbers 1-6.\n")
     # Validates user input is not the same as any previous input
     elif user_input in set(previous_user_input):
         print("No, no, no! You have already tried this code.\n")
