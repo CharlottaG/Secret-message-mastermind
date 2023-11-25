@@ -39,8 +39,15 @@ When the user solves the code, they will be rewarded with a word of wisdom. Thes
 
 
 ## Future features/enhancements
-
+Further enhancements to the Master Mind Messages game is to add:
+- create user with login in, to keep track of scores when coming back to the game
+- keep a top score board with the top 5 players
+- play against another user instead of the app itself
+- have different difficulity levels
+- extend the range of digits to 0-9
+  
 ## Testing
+
 
 ## Deployment
 
