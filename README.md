@@ -1,6 +1,6 @@
 
 # The Master Mind Messages game
-(https://master-mind-messages-a1f168f8791a.herokuapp.com/)
+[https://master-mind-messages-a1f168f8791a.herokuapp.com/](https://master-mind-messages-a1f168f8791a.herokuapp.com/)
 
 The Master Mind Messages (MMM) game is an exciting game that entices you to reveal the secrets of wisdom! Your task is to decipher the hidden code and unveil the treasure of words of wisdom that lie beyond. Drawing inspiration from the classic mastermind game, where you have to guess your opponent's colors in the correct sequence, Master Mind Messages goes beyond mere guessing. It challenges your intelligence and intuition to unlock the door to enlightenment.
 
@@ -55,44 +55,40 @@ Further enhancements to the Master Mind Messages game is to add:
 - extend the range of digits to 0-9
 
 ## Error handling
-The user input with the guessed code is validated for:
+The user input is validated for:
   - not beeing empty
   - 4 digits, not less nor more
   - no repetition of digits
   - no other characters
   - digits between 1 and 6
-  - and that the entered numbers are not the same as any previous entry
+  - and that the input is not the same as any previous entry
 
 ## Testing
 ### Solved bugs
 *Incrementing invalid input* – when an invalid input was made it triggered the game to increment the trials. This was fixed by changing where to call the increment function. Before it was called xxx and now it is called xxx.
-*Game over after last try even if it was correct answer * - the game called the function to check if game was over before it called the function to check for the correct answer, by changing this the issue was solved.
+
+*Game over after last try even if it was correct answer* - the game called the function to check if game was over before it called the function to check for the correct answer, by changing this the issue was solved.
 
 ### PEP8 validation
 The code has been validated using the PEP8 validation installed in the IDE and has passed with no error or warning messages.
   
 ## Deployment
-* 1. Set up a Google Cloud Project:*
-- Go to the [Google Cloud Console](https://console.cloud.google.com/).
-- Create a new project: The Master Mind Message game.
-- Enable Google Sheet and Google Drive APIs.
-* 2. Create Service Account and Download Credentials:*
-- In the Google Cloud Console, navigate to "APIs & Services > Credentials."
-- Click on "Create credentials" and choose "Service account key."
-- Create a new service account with the Editor role.
-- Create a key in JSON format and download the JSON file with the credentials the application needs to access Google Cloud services.
-* 4. Deploy Your Application to Heroku:*
-- Go to your Heroku Dashboard and select your app.
-- deployment method: GitHub
-- connected to  CharlottaG/Secret-message-mastermind git repository
-- Navigate to the "Settings" tab.
-- Under "Config Vars," 
-  	- `GOOGLE_APPLICATION_CREDENTIALS`: Set this to the path of your JSON key file on Heroku.
-
-* 5. View Deployed Application:*
-
-- Trigger a new deployment on Heroku as it is set to manual deployment
-- Access the application on Heroku at [https://master-mind-messages-a1f168f8791a.herokuapp.com/].
+1. Set up a Google Cloud Project:
+   - Go to [the [Google Cloud Console](https://console.cloud.google.com/).](https://console.cloud.google.com/home/dashboard?project=mastermindmessage)
+   - Create project: MasterMindMessage.
+   - Enable Google Sheet and Google Drive APIs.
+2. Create Service Account and Download Credentials:
+   - In the Google Cloud Console, navigate to "APIs & Services > Credentials."
+   - Click on "Create credentials" and choose "Service account key."
+   - Create a new service account with the Editor role.
+   - Create a key in JSON format and download the JSON file with the credentials the application needs to access Google Cloud services.
+4. Deploy Application to Heroku:
+   - Go to the Heroku Dashboard and create the *master-mind-messages* app
+   - Deployment method: GitHub
+   - Navigate to the "Settings" tab and add Google credentials from the JSON file in the Config Vars
+5. View Deployed Application:
+   - For each new update a new deployment on Heroku is needed as it is set to manual deployment
+   - Access the application at [https://master-mind-messages-a1f168f8791a.herokuapp.com/].
 
 ## Credits
 *Check if digits*
