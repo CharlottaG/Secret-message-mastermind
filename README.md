@@ -92,13 +92,16 @@ The code has been validated using the PEP8 validation installed in the IDE and h
 
 ## Credits
 *Check if digits*
-https://www.w3schools.com/python/ref_string_isdigit.asp
+[https://www.w3schools.com/python/ref_string_isdigit.asp](https://www.w3schools.com/python/ref_string_isdigit.asp)
+
 *Convert number to array*
-https://stackoverflow.com/questions/20902785/write-the-digits-of-a-number-into-an-array
+[https://stackoverflow.com/questions/20902785/write-the-digits-of-a-number-into-an-array](https://stackoverflow.com/questions/20902785/write-the-digits-of-a-number-into-an-array)
+
 *To check for correct digit in correct position*
-https://www.geeksforgeeks.org/enumerate-in-python/
+[https://www.geeksforgeeks.org/enumerate-in-python/](https://www.geeksforgeeks.org/enumerate-in-python/)
+
 *To check that numbers are within given range*
-https://stackoverflow.com/questions/13628791/determine-whether-integer-is-between-two-other-integers
+[https://stackoverflow.com/questions/13628791/determine-whether-integer-is-between-two-other-integers](https://stackoverflow.com/questions/13628791/determine-whether-integer-is-between-two-other-integers)
 
 ### Acknowledgment
 I want to express my gratitude to Spencer Barriball for guiding me during this project and offering support and advice to help me overcome challenges and make progress.
