@@ -17,9 +17,36 @@ The intended audience comprises individuals with a logical mindset seeking to en
 ## How to use the app
 When you begin the game, you'll get some instructions to follow. Your goal is to figure out a secret code that reveals words of wisdom. You have 10 chances to get it right. To play, enter a 4-digit code with different numbers (no repeats), and each number should be between 1 and 6. Before making your first guess, you'll be asked for a username to welcome you to the game. 
 
-## Features
+## Features and functions
+The MMM app handles game-related tasks and user interactions, not database operations like Create, Read, Update, and Delete (CRUD). However, it does create a new random code for each game and retrieves a message from a spreadsheet when the user solves the code. The code also handles reading and displaying instructions, the user's name, and their input, which is validated and checked for a match against the random code. It also read the user’s answer whether to end the game or start a new one. The code updates the number of guesses, decreasing the remaining trials after each guess. When starting a new game, it resets the guesses and the list of previous user inputs, allowing the game to restart.
 
+**Variables:**
+   - `username`: Represents the name of the user playing the game.
+   - `MAX_GUESSES`: Represents the maximum number of guesses allowed.
+   - `user_input`: Represents the 4-digit code entered by the user.
+   - `previous_user_input`: A list to store the user's previous guesses.
+   - `random_code`: Represents the randomly generated 4-digit code for the player to guess.
+   - `random_secret_message`: Represents the words of wisdom retrieved from a spreadsheet.
 
+**Functions/Methods:**
+   - `instructions()`: Prints instructions for the game.
+   - `get_username()`: Asks the user for their name.
+   - `set_random_code()`: Generates a random 4-digit code.
+   - `get_user_input()`: Asks the user to input a 4-digit code.
+   - `validate_user_input(user_input)`: Validates the user's input for 4 digits, no other characters, and that the entry is not an empty string as well as:
+     - `has_duplication(code)`: Checks if there are duplicate digits in the input.
+     - `digits_within_range(user_input)`: Validates that the digits are within the range 1-6.
+   - `check_guess()`: Checks if the user's input matches the random code.
+   - `are_digits_in_code()`: Checks if each digit in the user's input exists and is in the correct position.
+   - `get_random_secret_message()`: Retrieves a random secret message from a spreadsheet.
+   - `increment_guess()`: Decreases the number of guesses left.
+   - `is_game_over()`: Checks if the game is over and asks the user if they want to play again.
+   - `main()`: The main function that orchestrates the game flow.
+
+**External Libraries:**
+   - The app utilizes the `gspread` library to interact with Google Sheets to retrieve the wisdom words.
+   - The app uses the `random` module to generate random values for the random code that user is trying to figure out.
+   - 
 ## Error handling
 The user input with the guessed code is validated for:
   - not beeing empty
@@ -28,6 +55,14 @@ The user input with the guessed code is validated for:
   - no other characters
   - digits between 1 and 6
   - and that the entered numbers are not the same as any previous entry
+
+## Testing
+### Solved bugs
+*Incrementing invalid input* – when an invalid input was made it triggered the game to increment the trials. This was fixed by changing where to call the increment function. Before it was called xxx and now it is called xxx.
+*Game over after last try even if it was correct answer * - the game called the function to check if game was over before it called the function to check for the correct answer, by changing this the issue was solved.
+
+### PEP8 validation
+The code has been validated using the PEP8 validation installed in the IDE and has passed with no error or warning messages.
 
 ## Heroku deployment
 
