@@ -94,9 +94,17 @@ The code has been validated using the PEP8 validation installed in the IDE and h
 - Trigger a new deployment on Heroku as it is set to manual deployment
 - Access the application on Heroku at [https://master-mind-messages-a1f168f8791a.herokuapp.com/].
 
-
 ## Credits
+*Check if digits*
+https://www.w3schools.com/python/ref_string_isdigit.asp
+*Convert number to array*
+https://stackoverflow.com/questions/20902785/write-the-digits-of-a-number-into-an-array
+*To check for correct digit in correct position*
+https://www.geeksforgeeks.org/enumerate-in-python/
+*To check that numbers are within given range*
+https://stackoverflow.com/questions/13628791/determine-whether-integer-is-between-two-other-integers
 
-## Idea
+### Acknowledgment
+I want to express my gratitude to Spencer Barriball for guiding me during this project and offering support and advice to help me overcome challenges and make progress.
 
 
