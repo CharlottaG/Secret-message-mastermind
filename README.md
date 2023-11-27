@@ -25,14 +25,13 @@ Python
 Codeanywhere
 GitHub
 Heroku
+Lucid
 
 **APIs**
 Google Drive
 Google Sheet
 
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/6f82cd40-3c8f-4ce8-820d-0b9ea94ee7fd)
-
-
 
 ## Features and functions
 The MMM app handles game-related tasks and user interactions, not database operations like Create, Read, Update, and Delete (CRUD). However, it does create a new random code for each game and retrieves a message from a spreadsheet when the user solves the code. The code also handles reading and displaying instructions, the user's name, and their input, which is validated and checked for a match against the random code. It also read the user’s answer whether to end the game or start a new one. The code updates the number of guesses, decreasing the remaining trials after each guess. When starting a new game, it resets the guesses and the list of previous user inputs, allowing the game to restart.
@@ -72,52 +71,43 @@ Further enhancements to the Master Mind Messages game is to add:
 - have different difficulity levels
 - extend the range of digits to 0-9
 
-## Error handling
-The user input is validated for:
-  - not beeing empty
-  - 4 digits, not less nor more
-  - no repetition of digits
-  - no other characters
-  - digits between 1 and 6
-  - and that the input is not the same as any previous entry
-
 ## Testing
 ### Solved bugs
-*Incrementing invalid input* – when an invalid input was made it triggered the game to increment the trials. This was fixed by changing where to call the increment function. Before it was called xxx and now it is called xxx.
+*Incrementing invalid input* – when an invalid input was made it triggered the game to increment the trials. This was fixed by changing where to call the increment function. 
 
 *Game over after last try even if it was correct answer* - the game called the function to check if game was over before it called the function to check for the correct answer, by changing this the issue was solved.
 
-*Testing that validation works*
-  - not beeing empty
+### Testing
+**Input not empty**
 
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/d423cf1f-2de3-43e4-af15-ac115cfc5c6a)
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/70eeff61-4f39-481c-b049-af3ecef0fa38)
 
-  - 4 digits, not less nor more
+**4 digits, not less nor more**
     
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/857bf07f-fa8e-4954-a28f-cd4f3f289270)
 
-  - no repetition of digits
+**No repetition of digits**
     
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/9bb134c2-e012-41f8-9845-3ab1ff70e334)
 
-  - no other characters
+ **No other characters, digits only**
     
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/bc78a484-6679-4322-b172-0c4dd10e939c)
 
-  - digits between 1 and 6
+ **Digits between 1 and 6**
     
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/0d8e2d0b-5056-4577-98e6-966315d5a229)
 
-  - and that the input is not the same as any previous entry
+**That the input is not the same as any previous entry**
 
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/1edd0623-728e-4d35-baaf-cf5c39f15818)
 
-- that random words of wisdom is generated and printed to the terminal
+**That the random words of wisdom are generated and printed to the terminal**
   
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/436acb66-fc86-46e5-ac04-2f6e20aad6a8)
 
-- that the function to restart or exit the game works
+**That the function to restart or exit the game works**
   
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/7c147405-be45-4191-a2f9-574fb4508213)
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/0bc7e2bc-c82e-45db-9e3f-6f1f708c0ac4)
@@ -127,9 +117,7 @@ The code has been validated using the PEP8 validation installed in the IDE and h
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/74c508d3-dd82-4a78-8208-482ad1f0f683)
 
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/45edccaf-67fc-4519-a7ba-b95139a99dcb)
-
-
-  
+ 
 ## Deployment
 1. Set up a Google Cloud Project:
    - Go to [the [Google Cloud Console](https://console.cloud.google.com/).](https://console.cloud.google.com/home/dashboard?project=mastermindmessage)
