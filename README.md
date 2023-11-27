@@ -1,6 +1,6 @@
 
 # The Master Mind Messages game
-[https://master-mind-messages-a1f168f8791a.herokuapp.com/](https://master-mind-messages-a1f168f8791a.herokuapp.com/)
+[Go to Master Mind Messages app](https://master-mind-messages-a1f168f8791a.herokuapp.com/)
 
 The Master Mind Messages (MMM) game is an exciting game that entices you to reveal the secrets of wisdom! Your task is to decipher the hidden code and unveil the treasure of words of wisdom that lie beyond. Drawing inspiration from the classic mastermind game, where you have to guess your opponent's colors in the correct sequence, Master Mind Messages goes beyond mere guessing. It challenges your intelligence and intuition to unlock the door to enlightenment.
 
@@ -74,14 +74,46 @@ The user input is validated for:
 
 *Testing that validation works*
   - not beeing empty
+
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/d423cf1f-2de3-43e4-af15-ac115cfc5c6a)
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/70eeff61-4f39-481c-b049-af3ecef0fa38)
+
   - 4 digits, not less nor more
+    
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/857bf07f-fa8e-4954-a28f-cd4f3f289270)
+
   - no repetition of digits
+    
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/9bb134c2-e012-41f8-9845-3ab1ff70e334)
+
   - no other characters
+    
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/bc78a484-6679-4322-b172-0c4dd10e939c)
+
   - digits between 1 and 6
+    
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/0d8e2d0b-5056-4577-98e6-966315d5a229)
+
   - and that the input is not the same as any previous entry
+
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/1edd0623-728e-4d35-baaf-cf5c39f15818)
+
+- that random words of wisdom is generated and printed to the terminal
+  
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/436acb66-fc86-46e5-ac04-2f6e20aad6a8)
+
+- that the function to restart or exit the game works
+  
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/7c147405-be45-4191-a2f9-574fb4508213)
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/0bc7e2bc-c82e-45db-9e3f-6f1f708c0ac4)
 
 ### PEP8 validation
 The code has been validated using the PEP8 validation installed in the IDE and has passed with no error or warning messages.
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/74c508d3-dd82-4a78-8208-482ad1f0f683)
+
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/45edccaf-67fc-4519-a7ba-b95139a99dcb)
+
+
   
 ## Deployment
 1. Set up a Google Cloud Project:
@@ -116,5 +148,7 @@ The code has been validated using the PEP8 validation installed in the IDE and h
 
 ### Acknowledgment
 I want to express my gratitude to Spencer Barriball for guiding me during this project and offering support and advice to help me overcome challenges and make progress.
+
+
 
 
