@@ -23,7 +23,7 @@ random_secret_message = ""
 
 
 def instructions():
-    """Print instructions to user on how to play the game."""
+    """ Print instructions to user on how to play the game. """
     print("Can you find the code to learn the wisdom words?\n")
     print("It is a 4 digit code with numbers between 1 and 6.\n")
     print("There can be no duplicate digits in the code.\n")
@@ -36,7 +36,7 @@ def instructions():
 
 
 def get_username():
-    """Asks user for username, validates user input"""
+    """ Ask user for username, validates user input """
     global username
 
     while True:
@@ -55,7 +55,7 @@ def set_random_code():
 
 
 def get_user_input():
-    """ Asks user to enter a 4 digit code and validates the input """
+    """ Ask user to enter a 4 digit code and validates the input """
     global user_input
 
     while True:
@@ -67,7 +67,7 @@ def get_user_input():
 
 
 def validate_user_input(user_input):
-    """ Validates user input """
+    """ Validate user input """
     # Validates that input is not empty
     if user_input == "":
         print("No, no, no! You can't leave this empty!\n")
@@ -89,11 +89,11 @@ def validate_user_input(user_input):
     else:
         previous_user_input.append(user_input)
         check_guess()
-        increment_guess()
+        decrement_trials()
 
 
 def has_duplication(code):
-    """Checks for duplication in code"""
+    """ Check for duplication in code """
     entered_numbers = set()
     for digit in code:
         if digit in entered_numbers:
@@ -103,20 +103,16 @@ def has_duplication(code):
 
 
 def digits_within_range(user_input):
+    """ Check if digits are within the range of 1-6 """
     try:
         # Convert input to integer and check all digits are within range 1-6
         return all(1 <= int(digit) <= 6 for digit in user_input)
     except ValueError:
-        return False        
+        return False
 
 
 def check_guess():
-    """
-    Check if user input match random code.
-    """
-
-    # global user_input
-    # global random_code
+    """ Check if user input matches random code. """
     global random_secret_message
 
     if user_input == random_code:
@@ -129,9 +125,6 @@ def check_guess():
 
 def are_digits_in_code():
     """ Check if each digit in user input exits and match random code """
-    # global user_input
-    # global random_code
-
     user_input_array = [int(x) for x in str(user_input)]
     random_code_array = [int(x) for x in str(random_code)]
 
@@ -153,7 +146,6 @@ def are_digits_in_code():
 
 def get_random_secret_message():
     """ Get random message from spreadsheet """
-    # global secret_messages
 
     # Pick a random number(index) based on how many messages in sheet
     random_index = random.randint(0, len(secret_messages)-1)
@@ -163,8 +155,8 @@ def get_random_secret_message():
     return random_secret_message
 
 
-def increment_guess():
-    """ Increments guess for each new entry"""
+def decrement_trials():
+    """ Decrement trials for each new entry """
     global MAX_GUESSES
 
     if MAX_GUESSES > 0:
@@ -182,7 +174,7 @@ def is_game_over():
     global guesses_left
 
     if answer.upper() == "Y":
-        """ Reset values for new game"""
+        """ Reset values for new game """
         del previous_user_input[:]
         current_guess = 0
         guesses_left = 3
