@@ -194,5 +194,5 @@ def main():
     set_random_code()
     get_user_input()
 
-
-main()
+if __name__ == "__main__":
+    main()

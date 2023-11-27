@@ -72,6 +72,14 @@ The user input is validated for:
 
 *Game over after last try even if it was correct answer* - the game called the function to check if game was over before it called the function to check for the correct answer, by changing this the issue was solved.
 
+*Testing that validation works*
+  - not beeing empty
+  - 4 digits, not less nor more
+  - no repetition of digits
+  - no other characters
+  - digits between 1 and 6
+  - and that the input is not the same as any previous entry
+
 ### PEP8 validation
 The code has been validated using the PEP8 validation installed in the IDE and has passed with no error or warning messages.
   
