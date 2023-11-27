@@ -7,8 +7,11 @@ The Master Mind Messages (MMM) game is an exciting game that entices you to reve
 The Master Mind Messages app invites you to play, ponder to reach wisdom. Are you ready to embrace the challenge and reveal the profound messages that are hidden? The journey begins now!
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/f377821e-03b2-4548-aabd-6df7c1c8cfab)
 
-## Purpose 
+## Purpose and idea
 The MMM game is an app for pure entertainment and pastime, an app that tickles your logical thinking and can help you relax for a while, disconnecting from the demands of everyday life. The app is intended to provide more than just the joy of solving the code; you should also take away a wise word along the way.
+
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/bd4d108b-fd6d-47a0-bb91-71d7e2d4aefb)
+
 
 ## User demographic
 The intended audience comprises individuals with a logical mindset seeking to engage in a bit of brain exercise.
