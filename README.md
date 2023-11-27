@@ -1,4 +1,3 @@
-
 # The Master Mind Messages game
 [Go to Master Mind Messages app](https://master-mind-messages-a1f168f8791a.herokuapp.com/)
 
@@ -12,12 +11,28 @@ The MMM game is an app for pure entertainment and pastime, an app that tickles y
 
 ![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/bd4d108b-fd6d-47a0-bb91-71d7e2d4aefb)
 
-
 ## User demographic
 The intended audience comprises individuals with a logical mindset seeking to engage in a bit of brain exercise.
 
 ## How to use the app
 When you begin the game, you'll get some instructions to follow. Your goal is to figure out a secret code that reveals words of wisdom. You have 10 chances to get it right. To play, enter a 4-digit code with different numbers (no repeats), and each number should be between 1 and 6. Before making your first guess, you'll be asked for a username to welcome you to the game. 
+
+## Technologies used
+**Language**
+Python
+
+**Platforms**
+Codeanywhere
+GitHub
+Heroku
+
+**APIs**
+Google Drive
+Google Sheet
+
+![image](https://github.com/CharlottaG/Secret-message-mastermind/assets/138576943/6f82cd40-3c8f-4ce8-820d-0b9ea94ee7fd)
+
+
 
 ## Features and functions
 The MMM app handles game-related tasks and user interactions, not database operations like Create, Read, Update, and Delete (CRUD). However, it does create a new random code for each game and retrieves a message from a spreadsheet when the user solves the code. The code also handles reading and displaying instructions, the user's name, and their input, which is validated and checked for a match against the random code. It also read the user’s answer whether to end the game or start a new one. The code updates the number of guesses, decreasing the remaining trials after each guess. When starting a new game, it resets the guesses and the list of previous user inputs, allowing the game to restart.
