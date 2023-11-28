@@ -182,6 +182,7 @@ def is_game_over():
         set_random_code()
         get_user_input()
     if answer.upper() == "N":
+        print("GAME OVER\n")
         exit()
     else:
         print("No, no, no! You need to enter Y or N.\n")
